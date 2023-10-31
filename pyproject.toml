@@ -11,7 +11,7 @@ packages = [{include = "fastapi_graphql_eventsourcing_async"}]
 python = "^3.11"
 uvicorn = "^0.23.2"
 fastapi = "^0.104.0"
-strawberry-graphql = "^0.211.1"
+strawberry-graphql = {extras = ["fastapi"], version = "^0.211.1"}
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.4.3"
