@@ -1,9 +1,18 @@
 import asyncio
+from functools import wraps
 import time
 import strawberry
 from starlette.concurrency import run_in_threadpool
 
 from strawberry.fastapi import GraphQLRouter
+
+# credit: https://stackoverflow.com/a/50450553
+def make_async(f):
+    @wraps(f)
+    async def wrapper(*args, **kwargs):
+        print(f"async, calling {f.__name__}")
+        return await run_in_threadpool(f, *args, **kwargs)
+    return wrapper
 
 
 def hello_sync() -> str:
@@ -14,6 +23,7 @@ def hello_sync() -> str:
 class Query:
 
     @strawberry.field
+    # @make_async
     def hello(self) -> str:
         time.sleep(1)
         return "Hello World"
