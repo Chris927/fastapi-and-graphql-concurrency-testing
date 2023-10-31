@@ -46,3 +46,24 @@ Percentage of the requests served within a certain time (ms)
   98%  12085
   99%  18118
 ```
+
+## Async GraphQL Query
+
+`ab -p postfile_async -T 'application/json' -c 10 -n 100 127.0.0.1:3010/graphql`
+
+We get concurrency:
+
+```
+Percentage of the requests served within a certain time (ms)
+  50%   1012
+  66%   1016
+  75%   1018
+  80%   1018
+  90%   1022
+  95%   1024
+  98%   1025
+  99%   1064
+ 100%   1064 (longest request)
+```
+
+
