@@ -66,4 +66,21 @@ Percentage of the requests served within a certain time (ms)
  100%   1064 (longest request)
 ```
 
+## Async GraphQL Query, with sync function run in threadpool
+
+`ab -p postfile_sync -T 'application/json' -c 10 -n 100 127.0.0.1:3010/graphql`
+
+We get concurrency:
+
+```
+Percentage of the requests served within a certain time (ms)
+  50%   1018
+  66%   1021
+  75%   1023
+  80%   1024
+  90%   1033
+  95%   1035
+  98%   1044
+  99%   1044
+```
 
