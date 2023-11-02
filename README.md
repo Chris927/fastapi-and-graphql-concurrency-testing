@@ -141,3 +141,24 @@ Percentage of the requests served within a certain time (ms)
  100%   1034 (longest request)
 ```
 
+## Sync FastAPI Route, "Out of the Box"
+
+When using a sync function for a FastAPI route, we get fine concurrency. This
+is FastAPI's built-in behaviour, explained [in their
+documentation](https://fastapi.tiangolo.com/async/).
+
+With `ab -c 10 -n 100 127.0.0.1:3010/hello_sync` we get:
+
+```
+...
+Percentage of the requests served within a certain time (ms)
+  50%   1014
+  66%   1016
+  75%   1017
+  80%   1017
+  90%   1019
+  95%   1021
+  98%   1021
+  99%   1021
+ 100%   1021 (longest request)
+```
